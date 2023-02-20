@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Vasialo</string>
+    <string name="button">Что делает?</string>
+    <string name="text_view">Нажмите кнопку</string>
+    
+    <string-array name="animals">
+        <item>Коть</item>
+        <item>Собака</item>
+        <item>Вася</item>
+    </string-array>
+</resources>
