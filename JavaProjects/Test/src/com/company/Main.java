@@ -6,18 +6,11 @@ public class Main {
 
     public static void main(String[] args) {
 
-        ArrayList<Integer> intList = new ArrayList<>();
-        intList.add(2);
-        intList.add(5);
-        intList.add(8);
+        byte b;
 
-        double sum = 0;
-        for(int i : intList){
-            sum = sum + i;
-        }
-        sum = sum/intList.size();
+        b=127;
 
-        System.out.print(sum);
+        System.out.print("b: "+b);
 
 
     }
