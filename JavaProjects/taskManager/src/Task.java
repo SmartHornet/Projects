@@ -21,5 +21,11 @@ public class Task {
         name = ob.getName();
         description = ob.getDescription();
     }
+    Task(){}
+
+    @Override
+    public String toString() {
+        return "name: "+name+" description: "+description;
+    }
 }
 

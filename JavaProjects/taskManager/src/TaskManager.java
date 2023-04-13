@@ -8,8 +8,6 @@ public class TaskManager {
     private ArrayList<Epic> epics;
 
 
-
-
     public void createTask(String name, String description){
         Task task = new Task(name, description);
         tasks.add(task);
@@ -38,8 +36,9 @@ public class TaskManager {
         return allTasks.get(id);
     }
 
-
-
+    public ArrayList<Task> getTaskList(){
+        return new ArrayList<Task>(tasks);
+    }
 
     TaskManager(){
         allTasks = new HashMap<>();
