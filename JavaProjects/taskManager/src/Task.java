@@ -21,7 +21,7 @@ public class Task {
         name = ob.getName();
         description = ob.getDescription();
     }
-    Task(){}
+    //Task(){}
 
     @Override
     public String toString() {
