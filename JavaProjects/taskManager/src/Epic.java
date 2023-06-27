@@ -16,6 +16,7 @@ public class Epic extends Task{
 
     int getStatus(){
         if(subtasks.size() == 0) return Subtask.NEW;
+
         boolean statusNEW = true, statusDONE = true;
         for(Subtask i: subtasks){
             if(i.getStatus() != Subtask.DONE) statusDONE = false;

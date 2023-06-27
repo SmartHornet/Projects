@@ -47,7 +47,7 @@ public class TaskManager {
 
 
     public void createEpic(String name, String description){
-        tasks.put(generateID(),new Task(name, description));
+        epics.put(generateID(),new Epic(name, description));
     }
 
     public boolean addEpic(Epic epic){
@@ -65,7 +65,7 @@ public class TaskManager {
         } else return false;
     }
 
-    public Task getEpic(int id){
+    public Epic getEpic(int id){
         return epics.get(id);
     }
 
@@ -106,22 +106,21 @@ public class TaskManager {
         return true;
     }
 
-    public Task getTask(int id){
-        return tasks.get(id);
+    public Subtask getSubtask(int id){
+        return subTasks.get(id);
     }
 
-    public HashMap<Integer, Task> getTasks(){
-        return new HashMap<Integer, Task>(tasks);
+    public HashMap<Integer, Subtask> getSubtasks(){
+        return new HashMap<Integer, Subtask>(subTasks);
     }
 
-    public boolean removeTask(int id){
-        if(!tasks.containsKey(id)) return false;
-        tasks.remove(id);
+    public boolean removeSubTask(int id){
+        if(!subTasks.containsKey(id)) return false;
+        Subtask subtask = subTasks.get(id);
+        Epic epic = subtask.getEpic();
+        epic.removeSubtask(subtask);
+        subTasks.remove(id);
         return true;
-    }
-
-    public void removeAllTasks(){
-        tasks.clear();
     }
 
     /**********************************************************************************/

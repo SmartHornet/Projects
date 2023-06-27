@@ -9,25 +9,46 @@ public class Main {
         TaskManager taskManager = new TaskManager();
 
         Task task = new Task("Задача 1", "описание задачи 1");
-
         taskManager.addTask(task);
-
         taskManager.createTask("Задача 2", "описание задачи 2");
 
+        for(int i: taskManager.getTasks().keySet()){
+            System.out.println("ID: "+i+" "+taskManager.getTasks().get(i));
+        }
 
-        //tasks = taskManager.getTasks();
-        System.out.println(taskManager.getTasks());
+        /*taskManager.removeTask(1);
 
-        taskManager.removeAll();
+        for(int i: taskManager.getTasks().keySet()){
+            System.out.println("ID: "+i+" "+taskManager.getTasks().get(i));
+        }*/
 
-        System.out.println(taskManager.getTasks());
 
-        taskManager.createTask("Задача 3", "описание задачи 3");
+        Epic epic = new Epic("Эпик 1", "описание эпика 1");
+        taskManager.addEpic(epic);
+        taskManager.createEpic("Эпик 2", "описание эпика 2");
 
-        System.out.println(taskManager.getTasks());
-        //System.out.println(taskManager.getTasks());
+        for(int i: taskManager.getEpics().keySet()){
+            System.out.println("ID: "+i+" "+taskManager.getEpics().get(i)+" status: "+taskManager.getEpics().get(i).getStatus());
+        }
 
-        //System.out.println(task);
+        taskManager.createSubtask("Подзадача 1", "описание подзадачи 1",epic);
+
+
+
+        for(int i: taskManager.getSubtasks().keySet()){
+            System.out.println("ID: "+i+" "+taskManager.getSubtasks().get(i)+" status: "+taskManager.getSubtasks().get(i).getStatus());
+        }
+
+        System.out.println();
+
+        Subtask subtask = new Subtask("Подзадача 2", "описание подзадачи 2");
+        taskManager.updateSubtask(subtask,4);
+
+        for(int i: taskManager.getSubtasks().keySet()){
+            System.out.println("ID: "+i+" "+taskManager.getSubtasks().get(i)+" status: "+taskManager.getSubtasks().get(i).getStatus());
+        }
+
+        System.out.println(epic.getSubtask());
 
     }
 }
