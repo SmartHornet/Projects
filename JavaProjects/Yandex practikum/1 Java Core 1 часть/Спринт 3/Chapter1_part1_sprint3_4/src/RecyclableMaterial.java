@@ -1,10 +1,9 @@
 public class RecyclableMaterial {
 
     private final int code;
-    private final
-    private final
-    private final
-
+    private final MaterialType type;
+    private final boolean isRecyclable;
+    private final String description;
 
     RecyclableMaterial(int code, MaterialType type, boolean isRecyclable, String description) {
         this.code = code;

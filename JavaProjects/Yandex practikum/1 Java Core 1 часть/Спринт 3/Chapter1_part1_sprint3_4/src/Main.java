@@ -29,11 +29,45 @@ public class Main {
                    4. вывести сообщение "Количество бонусных баллов: <баллы>."
         */
 
-        chatCommand.valueOf(commandValue);
+        boolean isExist = false;
+        for(ChatCommand chatCommand1: ChatCommand.values()){
+            if(commandValue.equalsIgnoreCase(chatCommand1.toString())) isExist = true;
+        }
 
-        System.out.print(chatCommand);
+        if(isExist) {
 
+            switch (chatCommand.valueOf(commandValue)){
+                case MAP:
+                    System.out.print(mapLink);
+                    break;
+                case RECYCLABILITY:
+                    System.out.print("Введите код переработки: ");
+                    int code = integerInput();
+                    isRecycled(code);
+                    break;
+                case BONUS:
+                    System.out.print("Введите количество вторсырья, кг: ");
+                    int recyclablesAmount = integerInput();
+                    int bonus;
+                    if(recyclablesAmount < 10) bonus = recyclablesAmount * 10;
+                    else bonus = recyclablesAmount * 15;
+                    System.out.print("Количество бонусных баллов: "+bonus);
+                    break;
+            }
 
+        } else System.out.println("Команда не найдена!");
+    }
+
+    public static int integerInput(){
+        Scanner scanner = new Scanner(System.in);
+        int result = 0;
+        try {
+            result = Integer.parseInt(scanner.nextLine().trim());
+        }
+        catch (NumberFormatException ex){
+            System.out.println("Введено не число или неверный формат!");
+        }
+        return result;
     }
 
     // добавьте модификаторы в заголовок метода
