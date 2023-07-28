@@ -1,8 +1,6 @@
-import java.io.Serial;
 import java.util.List;
 import java.util.Scanner;
 import java.util.ArrayList;
-
 
 public class Main {
     public static void main(String[] args) {
@@ -16,18 +14,16 @@ public class Main {
             //String number = scanner.next();
             int command = scanner.nextInt();
 
-            if (command < 1 || command > 3) {
+            if (command < 0 || command > 2) {
                 System.out.println("Введена неверная команда!");
                 return;
             }
-
 
             if (command == 1) {
                 System.out.println("Введите название фильма:");
                 String title = scanner.next();
                 System.out.println("Введите длительность фильма в минутах:");
                 int runtime = scanner.nextInt();
-
                 // На основе введенных пользователем значений создайте объект класса Movie
                 Movie movie = new Movie(title, runtime);
                 mediaItems.add(movie);
@@ -58,11 +54,10 @@ public class Main {
         System.out.println("0 - Посчитать суммарное время и выйти");
     }
 
-
     public static void printMediaItemsList(List<MediaItem> mediaItems) {
         System.out.println("Вы посмотрели фильмов и сериалов: " + mediaItems.size());
         for(MediaItem item: mediaItems){
             System.out.println(item.getTitle());
-    }
+        }
     }
 }

@@ -1,6 +1,6 @@
 public interface MediaItem {
 
-    // Длительность фильма или сериала в минутах
+    // Р”Р»РёС‚РµР»СЊРЅРѕСЃС‚СЊ С„РёР»СЊРјР° РёР»Рё СЃРµСЂРёР°Р»Р° РІ РјРёРЅСѓС‚Р°С…
     public int getRuntime();
 
     public String getTitle();

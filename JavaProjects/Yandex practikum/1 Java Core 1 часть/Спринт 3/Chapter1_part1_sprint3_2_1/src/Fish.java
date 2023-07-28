@@ -1,2 +1,11 @@
-package PACKAGE_NAME;public class Fish {
+public class Fish extends Pet{
+
+    Fish() {
+        super(0);
+    }
+
+    @Override
+    public void giveVoice() {
+        System.out.println("Буль буль!");
+    }
 }
