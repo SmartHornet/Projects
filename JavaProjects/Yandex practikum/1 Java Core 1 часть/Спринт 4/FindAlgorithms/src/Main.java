@@ -20,14 +20,14 @@ public class Main {
 
 
     public int[] quickSort(int[] array){
-        if(array.length < 1) return array;
+        if(array.length < 2) return array;
 
 
 
 
     }
 
-    private int[] quickSort(int left, int right, int[] array){
+    private void quickSort(int[] array, int left, int right){
         int pivot = array[(right-left)/2];
         //int left = 0;
         //int right = array.length - 1;
@@ -40,7 +40,12 @@ public class Main {
             temp = array[left];
             array[left] = array[right];
             array[right] = temp;
+            left++; right--;
         }
+
+        quickSort(int[] array,
+
+
     }
 
 
