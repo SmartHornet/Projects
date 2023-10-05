@@ -1,5 +1,3 @@
-import java.lang.reflect.Array;
-import java.util.Random;
 import java.util.Scanner;
 
 public class Main {
@@ -47,7 +45,7 @@ public class Main {
         quickSort(array, 0, array.length-1);
     }
 
-    public static void quickSort(int[] array, int left, int right){
+    private static void quickSort(int[] array, int left, int right){
         //System.out.println("--------------------quickSort  left:"+left+" right:"+right+"---------------------------");
 
         if(left >= right) {
@@ -71,7 +69,7 @@ public class Main {
 
             if(l <= r) {
                 //System.out.println("--------------replace-----------------");
-               //System.out.println("l:" + l + "(" + array[l] + ")" + "r:" + r + "(" + array[r] + ")");
+                //System.out.println("l:" + l + "(" + array[l] + ")" + "r:" + r + "(" + array[r] + ")");
                 temp = array[l];
                 array[l] = array[r];
                 array[r] = temp;
@@ -92,8 +90,8 @@ public class Main {
 
 
         //System.out.println("-----------pered quickSort1 left:"+left+" r:"+r+"--------------");
-       quickSort(array, left, r);
-       // System.out.println("-----------pered quickSort2 l:"+l+" right:"+right+"--------------");
+        quickSort(array, left, r);
+        // System.out.println("-----------pered quickSort2 l:"+l+" right:"+right+"--------------");
         quickSort(array, l, right);
     }
 
