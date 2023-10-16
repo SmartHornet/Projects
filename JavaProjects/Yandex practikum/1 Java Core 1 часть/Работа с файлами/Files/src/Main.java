@@ -12,19 +12,37 @@ public class Main {
 
         //Старый интерфейс
         File oldTestDir = new File(System.getProperty("java.class.path")+File.separator+"oldTestDir");
-        File oldTestTxtFile = new File(oldTestDir, "oldTestTxtFile.txt");
+        File newNameOldTestDir = new File(System.getProperty("java.class.path")+File.separator+"newNameOldTestDir");
+        File oldTestTxtFile = new File(newNameOldTestDir, "oldTestTxtFile.txt");
+
+        if(oldTestDir.exists()){
+            System.out.println("Папка "+oldTestDir.getName()+" существует");
+        }else {
+            System.out.println("Папка "+oldTestDir.getName()+" не существует");
+        }
 
         boolean dirIsCreated = oldTestDir.mkdir();
         if(dirIsCreated){
             System.out.println("Папка "+oldTestDir.getName()+" создана");
+        }else{
+            System.out.println("Папка "+oldTestDir.getName()+" не создана");
+        }
+
+        boolean dirIsRenamed = oldTestDir.renameTo(newNameOldTestDir);
+        if(dirIsRenamed){
+            System.out.println("Папка "+oldTestDir.getName()+" переименована");
+        }else{
+            System.out.println("Папка "+oldTestDir.getName()+" не переименована");
         }
 
         try (FileWriter fileWriter = new FileWriter(oldTestTxtFile)) {
-
-
         }catch (IOException e){
             System.out.println("Ошибка ввода-вывода! "+e.getMessage());
         }
+
+
+        fileWriter
+
 
         //oldTestTxtFile.
 
