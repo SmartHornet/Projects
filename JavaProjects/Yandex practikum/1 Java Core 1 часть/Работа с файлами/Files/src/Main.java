@@ -1,14 +1,12 @@
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.Writer;
+import java.io.*;
 import java.nio.file.FileAlreadyExistsException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
 public class Main {
-    public static void main(String[] args)  {
+    public static <e> void main(String[] args)  {
+
 
         //Старый интерфейс
         File oldTestDir = new File(System.getProperty("java.class.path")+File.separator+"oldTestDir");
@@ -35,13 +33,79 @@ public class Main {
             System.out.println("Папка "+oldTestDir.getName()+" не переименована");
         }
 
-        try (FileWriter fileWriter = new FileWriter(oldTestTxtFile)) {
+
+        //Байтовые потоки, текстовые файлы
+        FileOutputStream file = null;
+        try {
+            file = new FileOutputStream(oldTestTxtFile);
+
+            if(file != null){
+                file.write("Кот\n".getBytes());
+            }
+
+
+        }catch (IOException e){
+            System.out.println("Ошибка ввода-вывода! "+e.getMessage());
+        }finally {
+            try {
+                if(file != null) {
+                    file.flush();
+                    file.close();
+                }
+            }catch (IOException e){
+                System.out.println("Ошибка закрытия файла! "+e.getMessage());
+            }
+        }
+
+        try(FileWriter fw = new FileWriter(oldTestTxtFile,true)) {
+
+            fw.write("Сема");
+
         }catch (IOException e){
             System.out.println("Ошибка ввода-вывода! "+e.getMessage());
         }
 
+        try(BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(oldTestTxtFile)))){
+            System.out.println("Содержимое файла "+oldTestTxtFile.getName()+ ":");
+            String str;
+            do{
+                str = br.readLine();
+                if(str != null) System.out.println(str);
+            }while (str != null);
 
-        fileWriter
+        }catch (FileNotFoundException e) {
+            System.out.println("Файл не найден! " + e.getMessage());
+
+        } catch (IOException e) {
+            System.out.println("Ошибка ввода-вывода! " + e.getMessage());
+        }
+
+        //Новый интерфейс
+        Path newTestDataFilePath = Paths.get(newTestDir.toString(),"newTestDataFile.dat");
+
+        //бинарные файлы
+        Path newTestDir = Files.createDirectory(Paths.get(System.getProperty("java.class.path"),"newTestDir"));
+
+
+        try(Path newTestDir2 = Files.createDirectory(newTestDir)){
+
+        }catch (IOException e){
+            System.out.println("Ошибка создания папки "+newTestDir.toString()+"\n"+e.getMessage());
+        }
+
+
+
+        /*char[] pass;
+
+        Console console = System.console();
+
+        if(console != null){
+            System.out.print("pass: ");
+            pass = console.readPassword();
+            System.out.println(pass);
+        }else{
+            System.out.print("console = null");
+        }*/
 
 
         //oldTestTxtFile.
