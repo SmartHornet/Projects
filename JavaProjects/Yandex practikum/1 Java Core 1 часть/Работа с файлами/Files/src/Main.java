@@ -1,11 +1,12 @@
 import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.FileAlreadyExistsException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
 public class Main {
-    public static <e> void main(String[] args)  {
+    public static <e> void main(String[] args) {
 
 
         //Старый интерфейс
@@ -81,18 +82,104 @@ public class Main {
         }
 
         //Новый интерфейс
-        Path newTestDataFilePath = Paths.get(newTestDir.toString(),"newTestDataFile.dat");
 
         //бинарные файлы
-        Path newTestDir = Files.createDirectory(Paths.get(System.getProperty("java.class.path"),"newTestDir"));
+        //Path newTestDir = Files.createDirectory(Paths.get(System.getProperty("java.class.path"),"newTestDir"));
+        Path newTestDir;
+        newTestDir = Path.of(System.getProperty("java.class.path"),"newTestDir");
+        try{
+            Files.createDirectory(newTestDir);
 
-
-        try(Path newTestDir2 = Files.createDirectory(newTestDir)){
-
-        }catch (IOException e){
+        } catch (IOException e){
             System.out.println("Ошибка создания папки "+newTestDir.toString()+"\n"+e.getMessage());
         }
 
+        if(Files.exists(newTestDir)){
+            System.out.println("Папка "+newTestDir.toString()+" существует");
+        }else{
+            System.out.println("Папка "+newTestDir.toString()+" не существует");
+        }
+
+
+        Path newTestDataFile = Path.of(newTestDir.toString(),"newTestDataFile.dat");
+        try(DataOutputStream dataOutputStream = new DataOutputStream(Files.newOutputStream(newTestDataFile))){
+
+            dataOutputStream.writeInt(47869);
+            dataOutputStream.writeDouble(12.56);
+            String str = "Мяка";
+            dataOutputStream.write(str.getBytes(StandardCharsets.UTF_8));
+
+            //System.out.printf(Integer.toHexString(2));
+
+        }catch (IOException e){
+            System.out.println("Ошибка открытия потока "+e.getMessage());
+        }
+
+        try(DataInputStream dataInputStream = new DataInputStream(Files.newInputStream(newTestDataFile))){
+
+            int i = dataInputStream.readInt();
+            double d =  dataInputStream.readDouble();
+
+            byte[] byteArr = new byte[8];
+            dataInputStream.read(byteArr);
+
+            String str = new String(byteArr,StandardCharsets.UTF_8);
+
+            System.out.println("Считано из файла "+newTestDataFile.getFileName()+":");
+            System.out.println(i);
+            System.out.println(d);
+            System.out.println(str);
+
+        }catch (IOException e){
+            System.out.println("Ошибка открытия потока "+e.getMessage());
+        }
+
+        System.out.println("Нажмите ввод для удаления файлов");
+        try {
+            System.in.read();
+        } catch (IOException e) {
+            System.out.println("Ошибка ввода-вывода! "+e.getMessage());
+        }
+
+        if(oldTestTxtFile.exists()) {
+            String fn = oldTestTxtFile.getName();
+            if(oldTestTxtFile.delete()){
+                System.out.println("Файл "+fn+" удален");
+            }
+        }
+
+        if(oldTestDir.exists()) {
+            String fn = oldTestDir.getName();
+            if(oldTestDir.delete()){
+                System.out.println("Файл "+fn+" удален");
+            }
+        }
+
+        if(newNameOldTestDir.exists()) {
+            String fn = newNameOldTestDir.getName();
+            if(newNameOldTestDir.delete()){
+                System.out.println("Файл "+fn+" удален");
+            }
+        }
+
+        String fn = newTestDataFile.toString();
+        try {
+            if(Files.deleteIfExists(newTestDataFile)){
+                System.out.println("Файл "+fn+" удален");
+            }
+        } catch (IOException e) {
+            System.out.println("Ошибка удаления! "+e.getMessage());
+        }
+
+
+        fn = newTestDir.toString();
+        try {
+            if(Files.deleteIfExists(newTestDir)){
+                System.out.println("Файл "+fn+" удален");
+            }
+        } catch (IOException e) {
+            System.out.println("Ошибка удаления! "+e.getMessage());
+        }
 
 
         /*char[] pass;
