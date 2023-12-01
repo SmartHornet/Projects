@@ -30,10 +30,14 @@ public class Main {
         TreeSet<Item> treeSet = new TreeSet<>((itemA, itemB) -> itemB.toString().compareTo(itemA.toString()));
 
         treeSet.addAll(Arrays.asList(itemArray));
-
-
         System.out.println("TreeSet");
         System.out.println(treeSet);
+
+
+
+
+
+
 
     }
 }
