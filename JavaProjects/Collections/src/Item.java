@@ -12,7 +12,7 @@ public class Item {
 
     @Override
     public String toString() {
-        return "Item-"+Integer.toString(number);
+        return "Item-"+Integer.toString(number)+":"+str;
     }
 
     public int getNumber() {

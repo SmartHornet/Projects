@@ -12,6 +12,18 @@ public class Main {
         System.out.println("ArrayList");
         System.out.println(arrayList);
 
+        arrayList.forEach(item -> item.setNumber(item.getNumber()*2));
+        System.out.println("arrayList.forEach");
+        System.out.println(arrayList);
+
+        arrayList.removeIf(item -> item.getNumber() == 4);
+        System.out.println("arrayList.removeIf");
+        System.out.println(arrayList);
+
+        arrayList.replaceAll(item -> new Item(item.getStr()));
+        System.out.println("arrayList.replaceAll");
+        System.out.println(arrayList);
+
         LinkedList<Item> linkedList = new LinkedList<>();
         linkedList.addAll(Arrays.asList(itemArray));
         System.out.println("LinkedList");
@@ -34,9 +46,18 @@ public class Main {
         System.out.println(treeSet);
 
 
+        System.out.println("HashMap");
+        HashMap<String, Item> hashMap = new HashMap<>();
+        for(Item i: itemArray){
+            hashMap.put(i.getStr(),i);
+        }
 
+        Set<Map.Entry<String, Item>> temp =  hashMap.entrySet();
+        for(Map.Entry<String, Item> i: temp){
+            System.out.println(i);
+        }
 
-
+        
 
 
     }
