@@ -1,5 +1,7 @@
 package org.example
 
 fun main() {
-    println("Hello World!")
+
+    println(1 in 3 downTo 1);
+
 }
