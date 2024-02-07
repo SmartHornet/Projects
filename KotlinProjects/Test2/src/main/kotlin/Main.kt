@@ -1,8 +1,42 @@
 package org.example
 
-fun main() {
+class test(var name: String)
 
-    var index = 0
+class rectangle( val a: Int, val b: Int){
+    val isSquare: Boolean
+        get(){
+            return  a == b
+        }
+}
+
+fun main() {
+    //println("What is you name?")
+    //var name = readLine()
+
+
+    val r: rectangle = rectangle(4,6)
+    println(r.isSquare)
+    println(r.b)
+
+
+
+
+
+
+    //println(test(1))
+}
+
+
+
+
+
+
+
+
+
+
+fun test(index: Int, num: Int = 0)
+:String{
 
     var str: String = when(index){
         1 -> "Мяка"
@@ -12,15 +46,13 @@ fun main() {
 
     println(str);
 
-    var num = 0
-
-    str = when{
-       index > num -> ">"
+    return when {
+        index > num -> ">"
         index == num -> "="
         index < num -> "<"
         else -> "<=>"
     }
 
-    println(str);
-
 }
+
+
