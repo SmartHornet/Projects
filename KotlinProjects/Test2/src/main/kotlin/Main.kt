@@ -9,30 +9,52 @@ class rectangle( val a: Int, val b: Int){
         }
 }
 
-fun main() {
-    //println("What is you name?")
-    //var name = readLine()
-
-
-    val r: rectangle = rectangle(4,6)
-    println(r.isSquare)
-    println(r.b)
+fun task1(){
+    println("Введите числа через пробел:")
+    var input = readln();
+    if(input.isNotBlank()){
+        input = input.filter { it.isDigit() || it.isWhitespace()}
 
 
 
+        input = input.replace(Regex("\\s+"), " ")
+        //println(input);
+        var strList = input.split(' ')
+        strList.
+
+        println(strList);
+        /*println("Введены следующие числа:")
+        var sum = 0;
+        for(str in strList){
+            println(str);
+            sum += str.toInt();
+        }
+        println("Сумма: $sum");*/
+
+    } else println("Неверный формат ввода!");
+}
+
+fun task1_1(){
+
+    println("Введите числа через пробел:");
+    var input = readln();
+    //var input2 = input.replace("  ", " ")
+
+    //while(!input.equals(input2)){input = input2.replace("  ", " ")}
 
 
+    //input = input.replace("  ", " ")
+    println()
 
-    //println(test(1))
+
 }
 
 
+fun main() {
+    while(readln().equals("*")) task1()
 
-
-
-
-
-
+    //println('1'.isWhitespace())
+}
 
 
 fun test(index: Int, num: Int = 0)
