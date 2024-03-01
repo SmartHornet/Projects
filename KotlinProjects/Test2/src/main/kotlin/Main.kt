@@ -9,49 +9,62 @@ class rectangle( val a: Int, val b: Int){
         }
 }
 
+fun task1_fullProtect(){
+    println("Введите числа через пробел:")
+    var input = readln()
+    if(input.isNotBlank()){
+        input = input.filter {it.isDigit() || it.isWhitespace()}
+        println(input)
+        input = input.trim()
+        var strList = input.split(Regex("\\s+"))
+        println(strList)
+        var sumn = strList.sumOf {it.toInt()}
+
+
+        /*println("Введены следующие числа:")
+        var sum = 0;
+        for(str in strList) {
+            if (str.isNotBlank()) {
+                println(str);
+                sum += str.toInt();
+            }
+        }
+        println("Сумма1: $sum");*/
+        println("Сумма2: $sumn")
+
+    } else println("Неверный формат ввода!")
+}
+
 fun task1(){
     println("Введите числа через пробел:")
     var input = readln();
+    var strList = input.split(' ')
+
+
     if(input.isNotBlank()){
-        input = input.filter { it.isDigit() || it.isWhitespace()}
-
-
-
+        input = input.filter {it.isDigit() || it.isWhitespace()}
+        println(input);
         input = input.replace(Regex("\\s+"), " ")
-        //println(input);
-        var strList = input.split(' ')
-        strList.
+        println(input);
 
-        println(strList);
-        /*println("Введены следующие числа:")
+
+        println(strList)
+        println("Введены следующие числа:")
         var sum = 0;
-        for(str in strList){
-            println(str);
-            sum += str.toInt();
+        for(str in strList) {
+            if (str.isNotBlank()) {
+                println(str);
+                sum += str.toInt();
+            }
         }
-        println("Сумма: $sum");*/
+        println("Сумма: $sum");
 
-    } else println("Неверный формат ввода!");
-}
-
-fun task1_1(){
-
-    println("Введите числа через пробел:");
-    var input = readln();
-    //var input2 = input.replace("  ", " ")
-
-    //while(!input.equals(input2)){input = input2.replace("  ", " ")}
-
-
-    //input = input.replace("  ", " ")
-    println()
-
-
+    } else println("Неверный формат ввода!")
 }
 
 
 fun main() {
-    while(readln().equals("*")) task1()
+    while(readln().equals("*")) task1_fullProtect()
 
     //println('1'.isWhitespace())
 }
