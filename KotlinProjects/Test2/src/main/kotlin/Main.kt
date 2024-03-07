@@ -12,13 +12,12 @@ fun main() {
     var outFileStream = BufferedWriter(FileWriter("out.txt"))
     outFileStream.write(sumn.toString())
     outFileStream.close()
-
 }
 
 fun task2() {
     try{
         var inFileStream = BufferedReader(FileReader("in.txt"))
-        var input = inFileStream.readLine();
+        var input = inFileStream.readLine()
         inFileStream.close()
 
         var sumn = 0
@@ -43,7 +42,6 @@ fun task1(){
         sumn = sumOfString(input)
         println("Сумма: $sumn")
     } else println("Неверный формат ввода!")
-
 }
 
 
